@@ -25,7 +25,6 @@ class apt_conf (
             required_packages   => 'debian-keyring debian-archive-keyring',
             include_src         => false,
             notify              => Exec['apt_update'],
-            stage               => 'setup'
         }
     }
 }
