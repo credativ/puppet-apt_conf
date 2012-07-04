@@ -23,8 +23,8 @@ class apt_conf (
             release             => 'squeeze-backports',
             repos               => 'main contrib non-free',
             required_packages   => 'debian-keyring debian-archive-keyring',
-            include_src         => false
-            notify              => Exec['apt_update']
+            include_src         => false,
+            notify              => Exec['apt_update'],
             stage               => 'setup'
         }
     }
