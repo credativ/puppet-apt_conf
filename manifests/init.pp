@@ -3,7 +3,6 @@ class apt_conf (
     $use_backports = params_lookup('use_backports')
     ) inherits apt_conf::params {
 
-    Class['apt'] -> Class['apt_conf']
     
     apt::conf { 'apt_norecommends':
         ensure      => $ensure,
@@ -24,7 +23,6 @@ class apt_conf (
             repos               => 'main contrib non-free',
             required_packages   => 'debian-keyring debian-archive-keyring',
             include_src         => false,
-            notify              => Exec['apt_update'],
         }
     }
 }
