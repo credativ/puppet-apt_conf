@@ -4,7 +4,7 @@ class apt_conf (
     ) inherits apt_conf::params {
 
     Class['apt'] -> Class['apt_conf']
-
+    
     apt::conf { 'apt_norecommends':
         ensure      => $ensure,
         priority    => '99',
@@ -24,6 +24,8 @@ class apt_conf (
             repos               => 'main contrib non-free',
             required_packages   => 'debian-keyring debian-archive-keyring',
             include_src         => false
+            notify              => Exec['apt_update']
+            stage               => 'setup'
         }
     }
 }
